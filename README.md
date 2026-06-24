@@ -97,6 +97,10 @@ from uvoiced import MicrophoneManager, WavRecorder
 manager = MicrophoneManager(
     sample_rate=16000,
     mic_ibuf=16384,
+    sck_pin=32,
+    ws_pin=25,
+    sd_pin=33,
+    i2s_id=0,
     verbose=True,
 )
 
@@ -121,7 +125,15 @@ asyncio.run(main())
 import uasyncio as asyncio
 from uvoiced import MicrophoneManager, VoiceActivityDetector
 
-manager = MicrophoneManager(sample_rate=16000, mic_ibuf=16384)
+manager = MicrophoneManager(
+    sample_rate=16000, 
+    mic_ibuf=16384,
+    sck_pin=32,
+    ws_pin=25,
+    sd_pin=33,
+    i2s_id=0,
+)
+
 vad = VoiceActivityDetector(audio_manager=manager, verbose=True)
 
 async def main():
@@ -161,6 +173,10 @@ audio = AudioService(
     api_key=API_KEY,
     record_seconds=5,
     output_file="test.wav",
+    sck_pin=32,
+    ws_pin=25,
+    sd_pin=33,
+    i2s_id=0,
     verbose=True,
 )
 
